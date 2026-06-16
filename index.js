@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const app = express();
 const bcrypt = require("bcrypt");
-const auth = require("./auth");
+const auth = require("./middlewares/auth");
+const admin = require("./middlewares/admin");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -14,12 +15,12 @@ app.get("/", (req, res) => {
     message: "Backend Running",
   });
 });
-app.get("/users", async (req, res) => {
+app.get("/admin/users",auth, admin, async (req, res) => {
   const users = await prisma.user.findMany({
     select: {
-      id: true,
       name: true,
       email: true,
+      role: true
     },
   });
   res.json(users);
@@ -56,6 +57,7 @@ app.post("/signup", async (req, res) => {
     });
     res.json({
       success: true,
+      message: "User created successfully",
       user: {
         id: newUser.id,
         name: newUser.name,
