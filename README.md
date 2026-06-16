@@ -13,7 +13,7 @@ A secure Authentication API built with Node.js, Express.js, PostgreSQL, Prisma O
 - Prisma ORM
 - Environment Variables using dotenv
 - REST API Architecture
--Role Based Authorization Control
+- Role Based Authorization Control
 
 ## Tech Stack
 
