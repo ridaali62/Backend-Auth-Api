@@ -13,6 +13,7 @@ A secure Authentication API built with Node.js, Express.js, PostgreSQL, Prisma O
 - Prisma ORM
 - Environment Variables using dotenv
 - REST API Architecture
+-Role Based Authorization Control
 
 ## Tech Stack
 
@@ -149,6 +150,7 @@ Response:
 
 - Password hashing using bcrypt
 - JWT-based authentication
+- Role-based Authorization
 - Protected routes using middleware
 - Environment variables for sensitive data
 - Secure password verification
@@ -162,7 +164,10 @@ Backend-Auth-Api/
 │   └── schema.prisma
 │   └── migrations
 │
-├── auth.js
+├── middlewares/
+│   └── auth.js
+│   └── admin.js
+|
 ├── index.js
 ├── package.json
 ├── package-lock.json
